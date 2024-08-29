@@ -19,6 +19,26 @@
             "author": "Anand (@AnandSuresh02)",
             "keywords": ["AOSP", "simple", "Vanilla", "los"],
             "changelog": "Fixed an issue where the sim slot 2 wasn't being shown/detected. Bug fixes."
+        },
+        {
+            "name": "hentaiOS",
+            "build_date": "25/06/2024",
+            "version": "Ursamoon",
+            "download_link": "https://dl.buzzheavier.com/1805934433806753792?v=1724962421-cBw1i76E7KEepIOL6bq014dUNGT%2F%2FgTFzRSkxA6Oh%2Bk%3D",
+            "official": false,
+            "author": "Vishal",
+            "keywords": ["pixel", "simple", "gapps", "hos", "helluvaOS", "google"],
+            "changelog": "Fixed Mic issues in apps like telegram. Fixed offline charging animation. Updated vendor blobs and kernel from stock U1UG34.23-82-2 release. Sexy vibration while pulling qs has been added. Enabled Screen Attention. Update init scripts from stock. Fixed some sepolicy denials. Switched to Dark Boot animation. Fixed Thermal Hal. Fixed SDCard Getting Mounted in wrong location."
+        },
+        {
+            "name": "StatiXOS",
+            "build_date": "07/08/2024",
+            "version": "7.10",
+            "download_link": "https://dl.buzzheavier.com/1821066332371222528?v=1724962802-sZOv3gARmbuTW83783scEDUTd1Mzwf9kRPrECVPui%2B0%3D",
+            "official": false,
+            "author": "Vishal",
+            "keywords": ["pixel", "simple", "gapps", "google"],
+            "changelog": "Added Motorola Stock Camera so that your ugly face will get a nice shine in pictures. Removed Props related to debugging. This build should give you a better battery back-up because of some tweaks in power configurations done by @kartik01_g. Faster, Better, smoother now go dirty flash it over previous build. Updated Vendor blobs from latest stock tag U1UGS34.23-82-2-2 because you guys only want latest stuff. Added A15 status bar icons. Font picker is now available."
         }
     ]
 }
