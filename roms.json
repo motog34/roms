@@ -1,0 +1,24 @@
+{
+    "roms": [
+        {
+            "name": "RisingOS",
+            "build_date": "17/08/2024",
+            "version": "5.0",
+            "download_link": "https://github.com/Builds-Sozosha/RisingOS/releases/download/5.0/RisingOS-5.0-FINAL_BETA-20240816-CORE-COMMUNITY-fogos-ota.zip",
+            "official": false,
+            "author": "McLovin (@Sozosha)",
+            "keywords": ["Personalization", "Unofficial", "ros", "gapps"],
+            "changelog": "Initial Build. Uses oss kernel. Gapps are already included. Report bugs with proper logs if you find any."
+        },
+        {
+            "name": "LineageOS",
+            "build_date": "16/08/2024",
+            "version": "21.0",
+            "download_link": "https://github.com/Motorola-SM6375-Devs/releases/releases/download/21.0-20240816/lineage_signed-ota_update.zip",
+            "official": false,
+            "author": "Anand (@AnandSuresh02)",
+            "keywords": ["AOSP", "simple", "Vanilla", "los"],
+            "changelog": "Fixed an issue where the sim slot 2 wasn't being shown/detected. Bug fixes."
+        }
+    ]
+}
