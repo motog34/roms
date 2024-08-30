@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROMs center</title>
+    <style>
+        @font-face {
+            font-family: 'ProductSans-Bold';
+            src: url('https://motog34.github.io/font/Product_Bold.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'ProductSans-Regular';
+            src: url('https://motog34.github.io/font/Product_Regular.ttf') format('truetype');
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0 20px;
+            font-family: 'ProductSans-Regular', sans-serif;
+            background-color: #131313;
+            color: #e5e5e5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1,
+        p,
+        input[type="text"],
+        #suggestions,
+        #rom-list,
+        #no-results {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            width: 100%;
+            max-width: 600px;
+            margin: 100px 0 0 0;
+            text-align: left;
+            animation-delay: 0.2s;
+        }
+
+        p {
+            width: 100%;
+            max-width: 600px;
+            margin: 5px 0 50px 0;
+            text-align: left;
+            animation-delay: 0.4s;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            max-width: 700px;
+            padding: 17px 20px 17px 50px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 50px;
+            background-color: #2d2d2d;
+            color: #e5e5e5;
+            font-size: 1em;
+            text-align: left;
+            background-image: url('https://raw.githubusercontent.com/motog34/motog34.github.io/main/icon/search.svg');
+            background-position: 15px center;
+            background-repeat: no-repeat;
+            background-size: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+            position: sticky;
+            top: 15px;
+            z-index: 1000;
+            transform: translateY(+50%);
+            animation-delay: 0.6s;
+        }
+
+        #suggestions {
+            width: 100%;
+            max-width: 380px;
+            background-color: #2d2d2d;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+            position: fixed;
+            top: 75px;
+            left: 4%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 1001;
+            display: none;
+            -webkit-tap-highlight-color: transparent;
+            justify-content: space-between;
+            outline: none;
+        }
+
+        #suggestions.show {
+            opacity: 1;
+            transform: translateY(0);
+            display: block;
+        }
+
+        #suggestions ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #suggestions ul li {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #444;
+            color: #e5e5e5;
+        }
+
+        #suggestions ul li:hover {
+            background-color: #444;
+            border-radius: 20px;
+        }
+
+        #rom-list {
+            width: 95%;
+            max-width: 600px;
+            padding: 0;
+            margin: 0;
+            animation-delay: 1.3s;
+        }
+
+        #rom-list li {
+            background-color: #2d2d2d;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 35px;
+            list-style-type: none;
+            text-align: left;
+            color: #e5e5e5;
+            font-size: 1.2em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+            opacity: 1;
+            animation-delay: 0.9s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #rom-list li:hover,
+        #rom-list li:focus-within {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+        }
+
+        #rom-list li h2 {
+            font-family: 'ProductSans-Bold', sans-serif;
+            margin: 0 0 12px;
+            font-size: 1.5em;
+        }
+
+        #rom-list li p {
+            font-family: 'ProductSans-Regular', sans-serif;
+            margin: 5px 0 0 0;
+            font-size: 0.8em;
+            line-height: 1;
+            animation: fadeInUp 0s forwards;
+        }
+
+        .details-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 17px;
+            background-color: #c7c7c7;
+            color: #262626;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.8em;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease;
+            font-family: 'ProductSans-Regular', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            justify-content: space-between;
+            outline: none;
+        }
+
+        .details-link:hover {
+            background-color: #ffffff;
+        }
+
+        #no-results {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #no-results img {
+            width: 100px;
+            height: 100px;
+        }
+
+        #no-results p {
+            margin: 10px 0 0 0;
+            font-size: 1.2em;
+        }
+
+        @keyframes scrollDownFadeOut {
+            0% {
+                opacity: 1;
+                transform: translateY(0%);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(+10%);
+            }
+        }
+
+        .animate-scroll-down {
+            animation: scrollDownFadeOut 0.7s forwards;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Custom ROMs</h1>
+    <p>Unleash the potential of your device,<br>make it yours</p>
+    <input type="text" id="search-bar" placeholder="Search...">
+    <ul id="suggestions">
+    </ul>
+    <ul id="rom-list">
+    </ul>
+    <div id="no-results">
+        <img src="https://raw.githubusercontent.com/motog34/motog34.github.io/main/icon/quick_reference.svg" alt="No results">
+        <p1>Oops...<br>We couldn't find what you're looking for, who knows maybe in the not too distant future...</p1>
+    </div>
+
+    <script>
+        let roms = [];
+
+        window.onload = async () => {
+            try {
+                roms = await fetchRoms();
+                displayRoms(roms);
+
+                const searchBar = document.getElementById('search-bar');
+                const suggestions = document.getElementById('suggestions');
+                const noResults = document.getElementById('no-results');
+
+                searchBar.addEventListener('input', (event) => {
+                    filterRoms(event);
+                    displaySuggestions(event.target.value);
+                });
+
+                searchBar.addEventListener('focus', () => {
+                    suggestions.classList.add('show');
+                });
+
+                searchBar.addEventListener('blur', () => {
+                    setTimeout(() => {
+                        suggestions.classList.remove('show');
+                    }, 100);
+                });
+            } catch (error) {
+                console.error('Failed to load ROMs:', error);
+            }
+        };
+
+        const fetchRoms = async () => {
+            const response = await fetch('https://raw.githubusercontent.com/motog34/roms/main/roms.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            return data.roms;
+        };
+
+        const displayRoms = (romList) => {
+            romList.sort((a, b) => a.name.localeCompare(b.name));
+
+            const romListContainer = document.getElementById('rom-list');
+            const noResultsContainer = document.getElementById('no-results');
+            romListContainer.innerHTML = '';
+
+            if (romList.length === 0) {
+                noResultsContainer.style.display = 'flex';
+                romListContainer.style.display = 'none';
+            } else {
+                noResultsContainer.style.display = 'none';
+                romListContainer.style.display = 'block'; 
+                romList.forEach(rom => {
+                    const romItem = document.createElement('li');
+                    romItem.innerHTML = `
+                        <h2>${rom.name} ${rom.official ? '<img src="https://raw.githubusercontent.com/motog34/motog34.github.io/main/icon/verified.svg" alt="Official" style="width:24px; height:24px; position: relative; bottom: 2.5px; vertical-align: middle;">' : ''}</h2>
+                        <p>Build Date: ${rom.build_date}</p>
+                        <p>Version: ${rom.version}</p>
+                        <p>Author: ${rom.author}</p>
+                        <a href="#" class="details-link" data-url="details.html?rom=${encodeURIComponent(rom.name)}">More Details</a>
+                    `;
+                    romListContainer.appendChild(romItem);
+                });
+            }
+        };
+
+        const filterRoms = (event) => {
+            const searchTerm = event.target.value.toLowerCase().trim();
+            if (searchTerm === '') {
+                displayRoms(roms);
+                return;
+            }
+
+            const filteredRoms = roms.filter(rom =>
+                rom.name.toLowerCase().includes(searchTerm) ||
+                rom.author.toLowerCase().includes(searchTerm) ||
+                rom.keywords.some(keyword => keyword.toLowerCase().includes(searchTerm))
+            );
+
+            displayRoms(filteredRoms);
+        };
+
+        const displaySuggestions = (searchTerm) => {
+            const suggestions = document.getElementById('suggestions');
+            const suggestionsList = suggestions.querySelector('ul');
+            suggestionsList.innerHTML = '';
+
+            if (searchTerm.trim() === '') {
+                suggestions.classList.remove('show');
+                return;
+            }
+
+            const matchingRoms = roms.filter(rom =>
+                rom.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                rom.author.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                rom.keywords.some(keyword => keyword.toLowerCase().includes(searchTerm.toLowerCase()))
+            );
+
+            matchingRoms.slice(0, 5).forEach(rom => {
+                const suggestionItem = document.createElement('li');
+                suggestionItem.textContent = rom.name;
+                suggestionItem.addEventListener('click', () => {
+                    document.getElementById('search-bar').value = rom.name;
+                    filterRoms({ target: { value: rom.name } });
+                    document.getElementById('suggestions').classList.remove('show');
+                });
+                suggestionsList.appendChild(suggestionItem);
+            });
+
+            suggestions.classList.add('show');
+        };
+
+        document.addEventListener('click', (event) => {
+            if (event.target.classList.contains('details-link')) {
+                event.preventDefault();
+
+                document.body.classList.add('animate-scroll-down');
+
+                setTimeout(() => {
+                    window.location.href = event.target.getAttribute('data-url');
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+
+</html>
