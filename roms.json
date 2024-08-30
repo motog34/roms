@@ -39,6 +39,16 @@
             "author": "Vishal",
             "keywords": ["pixel", "simple", "gapps", "google"],
             "changelog": "Added Motorola Stock Camera so that your ugly face will get a nice shine in pictures. Removed Props related to debugging. This build should give you a better battery back-up because of some tweaks in power configurations done by @kartik01_g. Faster, Better, smoother now go dirty flash it over previous build. Updated Vendor blobs from latest stock tag U1UGS34.23-82-2-2 because you guys only want latest stuff. Added A15 status bar icons. Font picker is now available."
+        },
+        {
+            "name": "2by2",
+            "build_date": "28/07/2024",
+            "version": "14",
+            "download_link": "https://downloads.sourceforge.net/project/project2by2-test/fogos/14/2by2-Project-14-20240728-fogos.zip?ts=gAAAAABm0edU2ZloDeyqpVfx2A8GqlBmKj3cgtn-AypVNZXCAFHuYYTTzn7NwN0HBxHHG8Fl4BrFGt1cxVQxn-EgjFx68TmJQg%3D%3D&use_mirror=phoenixnap&r=",
+            "official": true,
+            "author": "Lahaina and Vishal",
+            "keywords": ["AOSP", "simple", "Gapps", "los"],
+            "changelog": "Initial release."
         }
     ]
 }
