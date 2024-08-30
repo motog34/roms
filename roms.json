@@ -49,6 +49,16 @@
             "author": "Lahaina and Vishal",
             "keywords": ["AOSP", "simple", "Gapps", "los"],
             "changelog": "Initial release."
+        },
+        {
+            "name": "CrDroid",
+            "build_date": "03/07/2024",
+            "version": "10.6",
+            "download_link": "",
+            "official": false,
+            "author": "Samw662",
+            "keywords": ["AOSP", "simple", "Gapps", "los"],
+            "changelog": ""
         }
     ]
 }
